@@ -7,6 +7,17 @@
 
 ---
 
+## 📋 环境要求
+
+**Windows 版本要求：**
+- ✅ Win10 专业版 / 企业版 / 教育版（版本 1903+）
+- ✅ Win11
+- ❌ 不支持 Win7 / Win8 / Win10 家庭版
+
+**macOS / Linux：** 无特殊要求
+
+---
+
 ## 👉 先选你的情况
 
 | 你的情况 | 用这套方案 | 预计耗时 |
@@ -43,7 +54,7 @@ docker run -d --name stock-web --restart unless-stopped -p 3002:3002 \
 curl -fsSL https://gitee.com/size-linw/docker_web/raw/master/setup.sh | bash
 ```
 
-**Windows PowerShell**：
+**Windows PowerShell**（按 `Win + X` → 选 **PowerShell / 终端**，不要在 CMD 或 Git Bash 里跑）：
 
 ```powershell
 irm https://gitee.com/size-linw/docker_web/raw/master/setup.bat -OutFile setup.bat
