@@ -54,7 +54,7 @@ irm https://gitee.com/size-linw/docker_web/raw/master/setup.bat -OutFile setup.b
 
 ---
 
-## 🧰 常用运维
+## 🧰 常用命令
 
 ```bash
 # 查看容器状态
