@@ -1,9 +1,5 @@
 # 鸿龙智算量化选股 · 策略回测平台（Docker 快照版）
 
-> 📦 **本仓库是「使用说明书」**。源代码、ClickHouse 数据快照、构建脚本等全部保留在私有仓 [`size-linw/stock_web`](https://gitee.com/size-linw/stock_web) 的 `docker_web/` 子目录中。
->
-> 本仓库体积 < 5KB，发布 Docker 镜像从阿里云 ACR **一键拉取即用**，不需要 clone 源代码。
-
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Docker Image](https://img.shields.io/badge/Docker-Aliyun_ACR-2496ED?logo=docker&logoColor=white)](https://cr.console.aliyun.com/repository/cn-hangzhou/hlong/stock-web-snapshot/details)
 
