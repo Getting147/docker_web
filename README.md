@@ -5,7 +5,7 @@
 
 ---
 
-## 🚀 一键启动（推荐）
+## 🚀 一键启动
 
 ```bash
 docker pull registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
@@ -16,7 +16,7 @@ docker run -d --name stock-web --restart unless-stopped -p 3002:3002 \
 
 浏览器打开 → http://localhost:3002
 
-零依赖，30 秒启动，不需要 Node.js、不需要数据库。
+零依赖，30 秒启动。
 
 ---
 
@@ -31,16 +31,6 @@ docker run -d --name stock-web --restart unless-stopped -p 3002:3002 \
 
 ---
 
-## 📖 文档
-
-| 文档 | 说明 |
-|------|------|
-| **本 README** | 快速使用说明 |
-| [DOCKER.md](https://gitee.com/size-linw/stock_web/blob/master/docker_web/DOCKER.md) | 完整部署文档（13 节，含架构、运维、卸载、FAQ） |
-| [源代码](https://gitee.com/size-linw/stock_web/tree/master/docker_web) | Node.js 服务 + 前端静态页 + Dockerfile + Compose |
-
----
-
 ## 🧰 常用运维
 
 ```bash
@@ -50,13 +40,11 @@ docker ps | grep stock-web
 # 看日志
 docker logs -f stock-web
 
-# 停止
+# 停止 / 重启
 docker stop stock-web
-
-# 重启
 docker restart stock-web
 
-# 卸载（停止+删容器+删镜像）
+# 卸载
 docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
 ```
 
@@ -70,23 +58,10 @@ docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/sto
 | 当前版本 | `v1.0.0` |
 | 基础镜像 | `node:20-alpine` |
 | 监听端口 | `3002` |
-| 体积 | 约 165 MB（包含 142MB 数据快照） |
-| 运行时 | 镜像内已 bake 全量数据，无需外部数据库 |
+| 体积 | 约 165 MB（已含全量数据快照） |
+| 依赖 | 镜像内已 bake 全量数据，无需外部数据库 |
 
 镜像地址：[https://cr.console.aliyun.com/repository/cn-hangzhou/hlong/stock-web-snapshot/details](https://cr.console.aliyun.com/repository/cn-hangzhou/hlong/stock-web-snapshot/details)
-
----
-
-## 🔄 数据更新 / 重新构建
-
-本仓库**不发布构建产物**。如需更新数据或重新构建镜像：
-
-1. 进入私有仓 `stock_web` 的 `docker_web/` 目录
-2. 运行 `python dump_snapshot.py` 重新生成数据快照
-3. `docker build -t registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.x.x .`
-4. `docker push registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.x.x`
-
-详细流程见 [DOCKER.md §7 数据更新与版本发布](https://gitee.com/size-linw/stock_web/blob/master/docker_web/DOCKER.md#7-数据更新与版本发布)。
 
 ---
 
@@ -99,6 +74,3 @@ docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/sto
 ## 💬 反馈
 
 - 邮箱：h209119@sina.cn
-- 微信：见 stock_web 私有仓 README
-
-© 2026 Hlong Tech. All rights reserved.
