@@ -16,7 +16,8 @@
 
 判断方法：设置 → 系统 → 关于 → **Windows 规格** → OS 版本
 
-**macOS / Linux：** 无特殊要求
+**macOS：** 需要 Homebrew（无则手动装 [Docker Desktop](https://www.docker.com/products/docker-desktop/)）
+**Linux：** 主流发行版均可（需 `curl` + `sudo`）
 
 ---
 
