@@ -2,7 +2,7 @@
 set -e
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; NC='\033[0m'
-IMAGE="registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0"
+IMAGE="registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest"
 PORT=3002
 CONTAINER="stock-web"
 

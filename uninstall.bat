@@ -3,7 +3,7 @@ chcp 65001 >nul
 setlocal
 
 set CONTAINER=stock-web
-set IMAGES=stock-web-snapshot:latest registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
+set IMAGES=registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest
 
 echo === Stock Web 卸载 ===
 

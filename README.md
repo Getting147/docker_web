@@ -34,10 +34,10 @@
 复制下面两行命令，粘贴到终端执行：
 
 ```bash
-docker pull registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
+docker pull registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest
 
 docker run -d --name stock-web --restart unless-stopped -p 3002:3002 \
-  registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
+  registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest
 ```
 
 启动成功后，浏览器打开 → **http://localhost:3002**
@@ -81,7 +81,7 @@ docker stop stock-web
 docker restart stock-web
 
 # 完全卸载（删容器 + 删镜像）
-docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0
+docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest
 ```
 
 也可以用仓库自带的卸载脚本：
@@ -95,6 +95,17 @@ irm https://gitee.com/size-linw/docker_web/raw/master/uninstall.bat -OutFile uni
 .\uninstall.bat
 ```
 
+### 方式 C：使用 Docker Compose
+
+仓库根目录已提供 `docker-compose.yml`：
+
+```bash
+docker compose up -d     # 启动
+docker compose down      # 停止
+```
+
+启动成功后浏览器访问 → **http://localhost:3002**
+
 ---
 
 ## 📦 镜像信息
@@ -102,7 +113,7 @@ irm https://gitee.com/size-linw/docker_web/raw/master/uninstall.bat -OutFile uni
 | 项 | 值 |
 |----|----|
 | 镜像仓库 | `registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot` |
-| 当前版本 | `v1.0.0` |
+| 当前版本 | 跟 `latest` tag 同步 |
 | 基础镜像 | `node:20-alpine` |
 | 监听端口 | `3002` |
 | 体积 | 约 165 MB（已含全量数据快照） |

@@ -1,0 +1,7 @@
+services:
+  stock-web:
+    image: registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest
+    container_name: stock-web
+    ports:
+      - "3002:3002"
+    restart: unless-stopped

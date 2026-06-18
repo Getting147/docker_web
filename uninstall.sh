@@ -3,7 +3,7 @@ set -e
 
 GREEN='\033[0;32m'; NC='\033[0m'
 CONTAINER="stock-web"
-IMAGES=("stock-web-snapshot:latest" "registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:v1.0.0")
+IMAGES=("registry.cn-hangzhou.aliyuncs.com/hlong/stock-web-snapshot:latest")
 
 echo -e "${GREEN}=== Stock Web 卸载 ===${NC}"
 
