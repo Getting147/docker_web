@@ -60,9 +60,11 @@ curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/setup.
 **Windows PowerShell**（按 `Win + X` → 选 **PowerShell / 终端**，不要在 CMD 或 Git Bash 里跑）：
 
 ```powershell
-irm https://raw.githubusercontent.com/Getting147/docker_web/master/setup.bat -OutFile setup.bat
+curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/setup.bat -OutFile setup.bat
 .\setup.bat
 ```
+
+> 为什么用 `curl` 而不是 `irm`？`irm -OutFile` 默认以 UTF-8 + LF 写文件，会把 setup.bat 的 CRLF 换行符改成 LF，导致 cmd 解析失败。`curl` 保留原始字节，最稳。Win10 1803+ 自带 curl.exe，PowerShell 里是 `curl.exe`（不是 `Invoke-WebRequest` 的别名 `curl`，必要时显式 `curl.exe`）。
 
 启动成功后，浏览器打开 → **http://localhost:3002**
 
@@ -92,7 +94,7 @@ docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/sto
 curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/uninstall.sh | bash
 
 # Windows
-irm https://raw.githubusercontent.com/Getting147/docker_web/master/uninstall.bat -OutFile uninstall.bat
+curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/uninstall.bat -OutFile uninstall.bat
 .\uninstall.bat
 ```
 
