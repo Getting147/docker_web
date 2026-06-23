@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
 setlocal
 
@@ -13,43 +13,48 @@ REM ============================================================
 REM 1. 检测 Docker；没有就自动装
 REM ============================================================
 where docker >nul 2>&1
-if %errorlevel% neq 0 (
-    echo [1/5] Docker 未安装，开始自动安装...
-
-    REM 优先 winget（Win10 1809+ / Win11 自带）
-    where winget >nul 2>&1
-    if %errorlevel% equ 0 (
-        echo 用 winget 安装 Docker Desktop（需 UAC 授权）...
-        winget install -e --id Docker.DockerDesktop --accept-source-agreements
-    ) else (
-        REM 回退：choco
-        where choco >nul 2>&1
-        if %errorlevel% equ 0 (
-            echo 用 choco 安装 Docker Desktop（需管理员权限）...
-            choco install docker-desktop -y
-        ) else (
-            REM 都没有就走 Docker 官方一键脚本
-            echo 未检测到 winget/choco，改用 Docker 官方安装脚本...
-            powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.docker.com/win | iex"
-        )
-    )
-
-    echo 等待 Docker Desktop 启动（首次 1-3 分钟）...
-    set /a waited=0
-    :wait_docker
-    if %waited% geq 60 (
-        echo Docker Desktop 启动超时，请检查后重试。
-        pause
-        exit /b 1
-    )
-    docker info >nul 2>&1
-    if %errorlevel% equ 0 goto docker_ready
-    timeout /t 3 /nobreak >nul
-    set /a waited+=1
-    goto wait_docker
-    :docker_ready
-)
+if %errorlevel% neq 0 goto install_docker
 echo [1/5] Docker 已就绪
+goto docker_check_done
+
+:install_docker
+echo [1/5] Docker 未安装，开始自动安装...
+
+REM 优先 winget（Win10 1809+ / Win11 自带）
+where winget >nul 2>&1
+if %errorlevel% equ 0 (
+    echo 用 winget 安装 Docker Desktop（需 UAC 授权）...
+    winget install -e --id Docker.DockerDesktop --accept-source-agreements
+) else (
+    REM 回退：choco
+    where choco >nul 2>&1
+    if %errorlevel% equ 0 (
+        echo 用 choco 安装 Docker Desktop（需管理员权限）...
+        choco install docker-desktop -y
+    ) else (
+        REM 都没有就走 Docker 官方一键脚本
+        echo 未检测到 winget/choco，改用 Docker 官方安装脚本...
+        powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.docker.com/win | iex"
+    )
+)
+
+echo 等待 Docker Desktop 启动（首次 1-3 分钟）...
+set /a waited=0
+:wait_docker
+if %waited% geq 60 (
+    echo Docker Desktop 启动超时，请检查后重试。
+    pause
+    exit /b 1
+)
+docker info >nul 2>&1
+if %errorlevel% equ 0 goto docker_ready
+timeout /t 3 /nobreak >nul
+set /a waited+=1
+goto wait_docker
+:docker_ready
+echo [1/5] Docker 已就绪
+
+:docker_check_done
 
 REM ============================================================
 REM 2. 拉镜像
