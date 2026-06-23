@@ -54,13 +54,13 @@ docker run -d --name stock-web --restart unless-stopped -p 3002:3002 \
 **macOS / Linux（Git Bash）**：
 
 ```bash
-curl -fsSL https://gitee.com/size-linw/docker_web/raw/master/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/setup.sh | bash
 ```
 
 **Windows PowerShell**（按 `Win + X` → 选 **PowerShell / 终端**，不要在 CMD 或 Git Bash 里跑）：
 
 ```powershell
-irm https://gitee.com/size-linw/docker_web/raw/master/setup.bat -OutFile setup.bat
+irm https://raw.githubusercontent.com/Getting147/docker_web/master/setup.bat -OutFile setup.bat
 .\setup.bat
 ```
 
@@ -89,10 +89,10 @@ docker rm -f stock-web && docker rmi registry.cn-hangzhou.aliyuncs.com/hlong/sto
 
 ```bash
 # macOS / Linux
-curl -fsSL https://gitee.com/size-linw/docker_web/raw/master/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Getting147/docker_web/master/uninstall.sh | bash
 
 # Windows
-irm https://gitee.com/size-linw/docker_web/raw/master/uninstall.bat -OutFile uninstall.bat
+irm https://raw.githubusercontent.com/Getting147/docker_web/master/uninstall.bat -OutFile uninstall.bat
 .\uninstall.bat
 ```
 
