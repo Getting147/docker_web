@@ -1,4 +1,4 @@
-# 鸿龙智算量化选股 · 策略回测平台（Docker 快照版）
+# 鸿龙智算量化回测平台（Docker 快照版）
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Docker Image](https://img.shields.io/badge/Docker-Aliyun_ACR-2496ED?logo=docker&logoColor=white)](https://cr.console.aliyun.com/repository/cn-hangzhou/hlong/stock-web-snapshot/details)
